@@ -149,6 +149,10 @@ export const updateTournament = async (id: string, updates: Partial<Tournament>)
   await updateDoc(docRef, updateData);
 };
 
+export const deleteTournament = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'tournaments', id));
+};
+
 // Tournament Registration Management
 export const registerForTournament = async (registration: TournamentRegistration): Promise<void> => {
   const batch = writeBatch(db);
@@ -321,6 +325,10 @@ export const updateAnnouncement = async (id: string, updates: Partial<Announceme
   }
 
   await updateDoc(docRef, updateData);
+};
+
+export const deleteAnnouncement = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'announcements', id));
 };
 
 export const markAnnouncementAsRead = async (announcementId: string, userId: string): Promise<void> => {
